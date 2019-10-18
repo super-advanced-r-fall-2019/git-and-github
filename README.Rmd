@@ -10,11 +10,8 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
-<<<<<<< Updated upstream
-# Lecture Template 0 one more time
-=======
-# Lecture Template - again
->>>>>>> Stashed changes
+
+# Lecture Template 
 
 This repository contains materials for the <YOUR LECTURE HERE> section of FSH 507 - Super-Advanced R (Fall 2019)
 

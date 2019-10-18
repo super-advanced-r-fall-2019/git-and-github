@@ -1,11 +1,11 @@
 ---
-title: "Topic"
+title: "GIt and Github"
 subtitle: "FSH 507 Fall 2019"
 author: "Your Name"
 date: " `r Sys.Date()`"
 output:
-  powerpoint_presentation: default
   ioslides_presentation: default
+  powerpoint_presentation: default
   html_document: default
   slidy_presentation: default
 ---
@@ -46,7 +46,93 @@ pressure %>%
 ```
 
 
+
+
 # Materials
+
+# Exercise Ideas
+
+## Clone the repo for this class
+
+* Pull in a change made by Lee Qi
+
+## Create a New Repo
+
+* Create a new repository on GitHub
+
+* Clone it to your computer
+
+* Add to the .gitignore file
+
+* Make a local change, commit it, and push it to GitHub
+
+  - For extra fun, revert back to the repo state before that commit
+
+## Deal with Conflict
+
+- Make a few changes on GitHub
+
+- Change the same things locally
+
+- Try and pull changes from GitHub
+
+- Resolve conflict, and push back to GitHub
+
+## Branching
+
+- Create a branch from your local repo
+
+- Make changes to that branch
+
+- Merge those changes back into the master branch
+
+## Branching and Rebasing 
+
+- Make another branch
+
+- Make and commit changes in that branch
+
+- Go back to master and make changes
+
+- Go back to your branch and [rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) from master
+
+- Merge rebased branch back into master
+
+## Forking and Pull Requests
+
+- Break into teams, and have one person fork the repo their partner made
+
+- Have the fork-er create a branch and make changes to it (ideally with conflicts)
+
+  - Commit and push those changes
+  
+  - Submit a pull request to the original repo's master branch
+  
+  - Have owner of repo review and merge pull request
+
+
+## Resources
+
+[Happy Git and Github for the useR](https://happygitwithr.com/)
+
+[Oh Sh*t, Git!](https://ohshitgit.com/) 
+  
+  * [Dangit, Git!](https://dangitgit.com/) if you're so inclined
+
+[git documentation itself isn't bad](https://git-scm.com/docs/)
+
+## Fun Resources
+
+[Commits From Last Night](http://www.commitlogsfromlastnight.com/)
+
+[git manual page generator](https://git-man-page-generator.lokaltog.net/)
+
+[starwars intro you commit history!](http://starlogs.net/#DanOvando/Global-Fishery-Potential)
+
+
+
+
+
 
 
 
