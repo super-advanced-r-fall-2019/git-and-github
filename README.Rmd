@@ -10,7 +10,7 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
-# Lecture Template - MY MACHINE
+# Lecture Template
 
 This repository contains materials for the <YOUR LECTURE HERE> section of FSH 507 - Super-Advanced R (Fall 2019)
 
