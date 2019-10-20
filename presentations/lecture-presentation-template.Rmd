@@ -1,14 +1,19 @@
 ---
-title: "GIt and Github"
-subtitle: "FSH 507 Fall 2019"
-author: "Your Name"
+title: "Git and Github"
+subtitle: "FISH 507 Fall 2019"
+author: "Lee Qi"
 date: " `r Sys.Date()`"
 output:
-  ioslides_presentation: default
-  powerpoint_presentation: default
-  html_document: default
-  slidy_presentation: default
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
 ---
+background-image: url(https://git-scm.com/images/logo@2x.png)
+background-size: 100px
+background-position: 80% 90%
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -16,57 +21,414 @@ library(tidyverse)
 library(gapminder)
 ```
 
-# R Markdown
 
-## Getting Started
+# In this class:
 
-This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown for presentations see <https://bookdown.org/yihui/rmarkdown/presentations.html>.
+What is Git?
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+Why use Git?
 
-## Slide with Bullets
+Basic Git commands
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
+--
 
-## Slide with R Output
+Some Github features
 
-```{r cars, echo = TRUE}
-summary(cars)
-```
-
-## Slide with Plot
-
-```{r pressure}
-pressure %>% 
-  ggplot(aes(temperature, pressure)) + 
-  geom_point()
-
+```{r out.width = '20%'}
+# url
+knitr::include_graphics("https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Octocat_GitHub_Mascot.png/600px-Octocat_GitHub_Mascot.png") 
 ```
 
 
+---
+background-image: url(https://git-scm.com/images/logo@2x.png)
+background-size: 100px
+background-position: 80% 90%
+
+# What is Git?
+
+--
+
+- A system for version control
+
+  - Stored as a series of snapshots (commits)
+  - Reload and restart from each snapshot
+![](https://blog.devmountain.com/wp-content/uploads/2019/07/Gitvs.Github-1b-750x322.jpg)
+
+???
+Like saving at checkpoints in a video game
+
+--
+
+- Free and open source
+
+---
+
+.pull-left[
+# Git
+
+```{r out.width = '50%'}
+# url
+knitr::include_graphics("https://git-scm.com/images/logo@2x.png") 
+```
+
+1. Local version control
+
+1. From the command line or used with third party GUIs
+
+1. Self-contained records of code
+]
+
+.pull-right[
+# Github
+
+```{r out.width = '20%'}
+# url
+knitr::include_graphics("https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Octocat_GitHub_Mascot.png/600px-Octocat_GitHub_Mascot.png") 
+```
+
+1. Cloud-based hosting platform
+
+1. Intuitive graphical web user interface
+
+1. Designed for sharing and collaboration
+]
+
+---
+# Why use
+
+.pull-left[
+
+```{r out.width = '50%'}
+# url
+knitr::include_graphics("https://git-scm.com/images/logo@2x.png") 
+```
+
+Keep track of your code over time
+
+Go back to older versions of your repository
+
+Branch to develop and test new features
+]
+--
+
+.pull-right[
+
+```{r out.width = '20%'}
+# url
+knitr::include_graphics("https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Octocat_GitHub_Mascot.png/600px-Octocat_GitHub_Mascot.png") 
+```
+
+Store your repository with its associated version history on a cloud
+
+Collaborate!
+]
+
+--
+
+##Bottom line:
+If (when) you screw your code up at some point, Git and Github will be there for you to help you find out when and where that happened.
+
+---
+background-image: url(https://git-scm.com/images/logo@2x.png)
+background-size: 100px
+background-position: 80% 90%
+
+# How to Git
+
+```{r out.width = '90%'}
+knitr::include_graphics("https://git-scm.com/book/en/v2/images/areas.png") 
+```
+--
+
+background-image: url(https://media.giphy.com/media/odsSqL5YuuypW/giphy.gif)
+background-size: 400px
+background-position: 95% 95%
+
+---
+
+# Ways to Git
+
+All Git commands can be executed in the command line- Command Prompt, Terminal.
+
+There are also many different user interfaces for managing Git repositories.
+
+- Dan's favourite: [GitKraken](https://www.gitkraken.com/)
 
 
-# Materials
+- From the makers of Sublime Text: [SublimeMerge](https://www.sublimemerge.com/)
 
-# Exercise Ideas
 
-## Clone the repo for this class
+- From the developers of Github: [Github Desktop](https://desktop.github.com/)
 
-* Pull in a change made by Lee Qi
+- [RStudio](https://rstudio.com/)
 
-## Create a New Repo
+.center[
+```{r out.width = '15%'}
+knitr::include_graphics("https://www.gitkraken.com/downloads/brand-assets/gitkraken-logo-light-sq.png")
+```
+```{r out.width = '15%'}
+knitr::include_graphics("https://img.stackshare.io/service/9564/sublimemerge.png")
+```
+```{r out.width = '18%'}
+knitr::include_graphics("https://desktop.github.com/images/desktop-icon.svg")
+```
+```{r out.width = '30%'}
+knitr::include_graphics("https://rstudio.com/wp-content/uploads/2018/10/RStudio-Logo-Flat.png")
+```
+]
 
-* Create a new repository on GitHub
+---
+class: centre
 
-* Clone it to your computer
+# But
 
-* Add to the .gitignore file
+--
 
-* Make a local change, commit it, and push it to GitHub
+background-image: url(https://media.giphy.com/media/51Uiuy5QBZNkoF3b2Z/giphy.gif)
+background-size: 300px
+background-position: 50% 60%
+
+Today we'll be learning how to run things from the ***command line***.
+
+---
+class: inverse, middle, center
+
+# Exercise: Getting set up
+
+---
+class: inverse
+
+# Getting set up
+
+1. Open up a command window
+
+  - Windows users: type "cmd" into your search bar
+  - Mac users: type "terminal" into Spotlight
+  - Linux users: you probably should know how to do this already
+
+--
+
+1. `git --version`
+  - To check that you have installed Git
+
+--
+
+1. `git config --list`
+  - To look at your global Git configuration variables
+  
+--
+  
+1. `git config --global user.name "Lee Qi" `
+  - Set user name
+  
+1. `git config --global user.email "leeqi@uw.edu"`
+  - Set email address
+  
+???
+Commits are linked to these, and that's how git and Github track your commits over time
+
+---
+
+background-image: url(https://media.giphy.com/media/odsSqL5YuuypW/giphy.gif)
+background-size: 400px
+background-position: 90% 90%
+
+# How to Git
+
+`git init` or `git clone`
+
+`git pull`
+
+`git add` or `git remove`
+
+`git commit`
+
+`git push`
+
+--
+
+***`git help`*** or ***`git help <verb>`*** or ***`git <verb> -h`***
+
+---
+
+class: middle, centre
+
+# `git clone`
+Clones an existing repository from a remote connection onto your local directory.
+
+---
+background-image: url(https://media.giphy.com/media/9x6fPJVGpq9HO/giphy.gif)
+background-size: 350px
+background-position: 90% 90%
+
+## Why `clone`? Why not just download the .zip file?
+
+--
+
+Sets directory up as a repository (i.e., with version history)
+
+Sets up link to remote git repository (`git clone`)
+
+Tracks your local changes and compares to the remote connection (`git status`)
+
+Pull easily to incorporate updates (`git pull`)
+
+---
+
+# Cloning vs Forking
+
+.pull-left[
+### Cloning
+
+1. Creates a local copy of the repository on your computer
+
+1. Does not automatically grant push privileges
+
+1. If you have changes or fixes, they stay in your local repository unless you're granted pushing privileges
+]
+
+.pull-right[
+### Forking
+
+1. Creates a copy of the repository on Github
+
+1. You have push privileges to your forked repository
+
+1. You can create a Pull Request for the owner of the original repository to review your changes and merge them into the original repository
+]
+
+---
+class: inverse, middle, centre
+
+# Exercise: `git clone`
+
+---
+class: inverse
+# `git clone`
+
+--
+background-image: url("../imgs/clone.png")
+background-size: 400px
+background-position: 90% 20%
+
+Navigate to the class [page](https://github.com/super-advanced-r-fall-2019/git-and-github).
+
+Copy repo link.
+
+--
+### From the command line:
+
+```
+git clone https://github.com/super-advanced-r-fall-2019/git-and-github.git
+```
+
+### From RStudio:
+
+1. New Project
+1. Version control
+1. Git
+1. Repository URL: https://github.com/super-advanced-r-fall-2019/git-and-github.git
+---
+
+background-image: url(https://media.giphy.com/media/ZaF4Vl1NQxwaVsStQU/giphy.gif)
+background-size: 150px
+background-position: 90% 90%
+
+# `.gitignore`
+
+One file to rule them all
+
+Specifies files and diretories to ignore (intentionally untrack)
+
+Each line specifies a pattern
+
+Visit [here](https://git-scm.com/docs/gitignore) for ways to specify patterns
+
+Can also set global patterns to ignore as a configuration variable `core.excludesFile`
+
+***NOTE***: Files already tracked by Git are not affected.
+  To stop tracking a file that is currently tracked, `git rm --cached` will do the trick.
+
+---
+class: middle, centre
+
+# `git pull`
+
+Pulls changes from the remote repository and merges them with your local copy
+
+---
+
+class: inverse, middle, centre
+
+# Workflow Demo
+
+---
+
+
+class: inverse, middle, centre
+
+# Exercise: `git pull`
+
+---
+class: inverse
+
+# `git pull`
+
+### From the command line:
+```
+git pull
+```
+
+### From RStudio:
+
+1. Git tab
+1. Pull
+
+---
+
+# What happens if you've made changes to the same file that someone had already committed?
+--
+
+## Sometimes
+If more than one person has been working on the same file, you can get the dreaded ***MERGE CONFLICT*** message.
+
+--
+## But
+We are getting ahead of ourselves...
+
+---
+
+class: inverse, middle, center
+
+# Exercise: Create a new repo
+
+---
+
+class: inverse
+
+# Creating a New Repository
+
+- Create a new repository on GitHub
+
+- Clone it to your computer
+
+- Add to the .gitignore file
+
+- Change the README.md
+
+- Make a local change, commit it, and push it to GitHub
 
   - For extra fun, revert back to the repo state before that commit
+
+
+---
+class: inverse, middle, center
+# Exercise: Pair up
+
+???
+Pick a person 1 and a person 2
+---
 
 ## Deal with Conflict
 
@@ -78,6 +440,8 @@ pressure %>%
 
 - Resolve conflict, and push back to GitHub
 
+---
+
 ## Branching
 
 - Create a branch from your local repo
@@ -85,6 +449,9 @@ pressure %>%
 - Make changes to that branch
 
 - Merge those changes back into the master branch
+
+
+---
 
 ## Branching and Rebasing 
 
@@ -98,6 +465,8 @@ pressure %>%
 
 - Merge rebased branch back into master
 
+---
+
 ## Forking and Pull Requests
 
 - Break into teams, and have one person fork the repo their partner made
@@ -109,6 +478,46 @@ pressure %>%
   - Submit a pull request to the original repo's master branch
   
   - Have owner of repo review and merge pull request
+
+---
+
+# Dealing with Merge Conflicts
+
+`git diff`
+
+- Git's internal `diff`-ing tool that shows changes to code
+- Can get unwieldy with large changes
+
+`git stash`
+
+- Stores a local version of your changes as in a "stash" without necessarily staging and commiting those changes
+- After `pull`ing, can use `git stash pop` to merge your local changes with new changes
+- Still have to manually go into the file and accept / reject changes
+
+---
+# Dealing with Merge Conflicts
+
+Might be easier to go into a GUI and manually sort through the changes
+- Some GUIs have more intuitive interfaces than others
+
+--
+
+background-image: url(https://media.giphy.com/media/hvGKQL8lasDvIlWRBC/giphy.gif)
+background-size: 350px
+background-position: 50% 80%
+
+## If all else fails, there is always the nuclear option... but ***highly do not recommend***!
+
+---
+
+# Github Issues
+
+---
+# Tips
+- Deleting files doesn't remove from Github necessarily
+- Repos can get unwieldy
+
+---
 
 
 ## Resources
