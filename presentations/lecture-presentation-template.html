@@ -179,6 +179,18 @@ background-position: 50% 60%
 We'll be learning how to run things from the ***command line***.
 
 ---
+class: center, middle
+
+&lt;img src="https://media.giphy.com/media/cz314BBYiCkiA/giphy.gif" width="80%" style="display: block; margin: auto;" /&gt;
+
+--
+
+# `git help`
+```
+git help &lt;verb&gt;
+git &lt;verb&gt; -h
+```
+---
 class: inverse, middle, center
 
 # Exercise: Getting set up
@@ -290,6 +302,7 @@ Clones an existing repository from a remote connection onto your local directory
 &lt;img src="https://media.giphy.com/media/TlK63Eu0ViBklB4v5RK/giphy.gif" width="50%" style="display: block; margin: auto;" /&gt;
 
 ---
+
 background-image: url(https://media.giphy.com/media/9x6fPJVGpq9HO/giphy.gif)
 background-size: 450px
 background-position: 50% 90%
@@ -616,6 +629,11 @@ class: inverse
 
 1. Check the status of the repository again - what's changed?
 
+--
+
+### Bonus:
+How do we unstage changes without deleting the file?
+
 ---
 background-image: url(https://git-scm.com/book/en/v2/images/areas.png)
 background-size: 700px
@@ -677,6 +695,11 @@ class: inverse
 
 1. Check the status of your repo
 
+--
+
+### Bonus
+How would we undo a commit?
+
 ---
 
 class: middle, center
@@ -685,7 +708,9 @@ class: middle, center
 
 &lt;img src="https://media.giphy.com/media/S31kT3zpR4LNm/giphy.gif" width="70%" style="display: block; margin: auto;" /&gt;
 ---
-
+background-image: url(https://media.giphy.com/media/oey8cN3A3yNdS/giphy.gif)
+background-size: 400px
+background-position: 95% 50%
 class: middle
 
 # `git push`
@@ -722,7 +747,7 @@ Push commit
 --
 
 .pull-left[
-Pulls changes
+Pull changes
 ]
 
 --
@@ -738,6 +763,9 @@ class: middle
 
 # Merge Conflicts
 
+.pull-left[
+### When changes happen on two different copies of the repo and are directed to the same remote
+
 They are going to happen
 
 You will have to deal with it
@@ -747,7 +775,7 @@ Almost definitely by hand
 Easier with a GUI
 
 Helps if you `pull` / `commit` / `push` often
-
+]
 ---
 
 # Dealing with Merge Conflicts
@@ -768,6 +796,9 @@ background-position: 50% 90%
 Deleting and re-downloading the repo
 ---
 class: middle
+background-image: url(https://media.giphy.com/media/YB7mkFNOSWZZS/giphy.gif)
+background-size: 350px
+background-position: 90% 10%
 # `git stash`
 
 Stores a local version of your changes as in a "stash" without necessarily staging and commiting those changes (though you could if you wanted to!)
@@ -788,10 +819,6 @@ class: inverse, middle, center
 
 ---
 class: inverse
-background-image: url(https://media.giphy.com/media/YB7mkFNOSWZZS/giphy.gif)
-background-size: 300px
-background-position: 90% 60%
-
 # Conflict Management
 
 ### Both:
@@ -823,15 +850,16 @@ git status      # Check repo status
 ```
 
 --
-background-image: url(https://media.giphy.com/media/KL7xA3fLx7bna/giphy.gif)
-background-size: 300px
-background-position: 90% 10%
 
 ### Both
 
 Look at the merged file and manually resolve the conflict(s)
 
 --
+background-image: url(https://media.giphy.com/media/KL7xA3fLx7bna/giphy.gif)
+background-size: 300px
+background-position: 90% 10%
+
 .pull-left[
 ### Person 1
 Stage, commit, and push the conflict-free file
@@ -845,102 +873,115 @@ Pull changes
 ]
 ---
 
-## Branching
+background-image: url("https://nvie.com/img/main-branches@2x.png")
+background-size: 300px
+background-position: 80% 80%
 
-- Create a branch from your local repo
+# Branching often may also help.
 
-- Make changes to that branch
+### What is branching?
 
-- Merge those changes back into the master branch
+.pull-left[
+The `master` branch is the main branch
+
+The `develop` branch goes parallel to the `master`, and merges back into the `master` at stable points
+
+This way, the `master` branch never gets messed up.
+]
+---
+# Why branch?
+
+&lt;img src="https://nvie.com/img/centr-decentr@2x.png" width="80%" style="display: block; margin: auto;" /&gt;
+???
+Can form sub-teams to work on different features or bug fixes
 
 ---
-# How to Git (branching)
+class: middle
+background-image: url(https://media.giphy.com/media/14b13BDH3V81wc/giphy.gif)
+background-size: 200px
+background-position: 90% 10%
+
+# `git branch`
+Lists branches in your working tree
 
 --
-Create a directory
 
-Initialise git: `git init`
+## `git branch -b branch-name`
+Creates a new branch with `branch-name`
 
-***Make changes***
+--
+
+## `git checkout branch-name`
+Switches to existing branch named `branch-name`
+
+Keeps local changes for staging
+---
+background-image: url(https://media.giphy.com/media/odsSqL5YuuypW/giphy.gif)
+background-size: 400px
+background-position: 90% 90%
+
+# Original Workflow
+
+### In your Git repo:
+
+Make changes
 
 Stage changes: `git add` and/or `git rm`
 
 Commit changes: `git commit -m "a very informative commit message"`
+
+Push changes to remote: `git push`
+
 ---
-# How to Git (branching)
+# Branching
 
-Create a directory
+### In your Git repo:
 
-Initialise git: `git init`
+Create a new branch: `git checkout -b my-new-feature-branch`
 
-Create a new feature branch: `git checkout -b my-new-feature-branch`
-
-***Make changes***
+Make changes
 
 Stage changes: `git add` and/or `git rm`
 
 Commit changes: `git commit -m "a very informative commit message"`
 
-Jump back to master branch: `git checkout master`
-
-Merge change into master: `git merge my-new-feature-branch`
-
---
-
-\* Useful when developing and testing features that won't mess up the main line.
-
-
----
-
-# How to Git (with a remote repository and branching)
-
-`git clone` (or `git init`)
-
-`git checkout -b my-new-feature-branch`
-
-***Make changes***
-
-`git pull`
-
-`git add` and/or `git rm`
-
-`git commit`
-
-`git push origin my-new-feature-branch`
+Push changes to remote branch: `git push origin my-new-feature-branch`
 
 --
 
 background-image: url("https://media.giphy.com/media/149ppZy9RU4CPe/giphy.gif")
-background-size: 300px
-background-position: 90% 60%
+background-size: 150px
+background-position: 50% 90%
 
 ---
 
-## Branching and Rebasing 
+class: inverse, middle, center
 
-- Make another branch
-
-- Make and commit changes in that branch
-
-- Go back to master and make changes
-
-- Go back to your branch and [rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) from master
-
-- Merge rebased branch back into master
+# Exercise: Branching
 
 ---
+class: inverse
 
-## Forking and Pull Requests
+# Branching
 
-- Break into teams, and have one person fork the repo their partner made
+1. Create a branch from your local repo
+  - `git branch -b my-new-branch`
 
-- Have the fork-er create a branch and make changes to it (ideally with conflicts)
+1. Make changes to that branch
 
-  - Commit and push those changes
-  
-  - Submit a pull request to the original repo's master branch
-  
-  - Have owner of repo review and merge pull request
+1. Merge those changes back into the master branch
+  - `git push origin my-new-branch`
+
+--
+
+### Bonus
+1. Make more changes to your branch
+
+1. Go back to `master` and make changes
+
+1. Go back to your branch and [rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) from `master`
+
+1. Merge rebased branch back into `master`
 
 ---
 
@@ -971,27 +1012,62 @@ background-position: 90% 10%
 ]
 
 ---
+class: inverse, middle, center
 
-# Github Issues
-
----
-# Tips
-- Deleting files doesn't remove from Github necessarily
-- Repos can get unwieldy
+# Exercise: Forking a repo
 
 ---
+class: inverse
+# Forking a repo
 
-# How to Git
+### Person 1
+Fork repository from Person A's Github
 
-.center[***`git help`*** or ***`git help &lt;verb&gt;`*** or ***`git &lt;verb&gt; -h`***]
+Clone forked repo
+
+### Both
+Create a branch 
+
+Make changes to it (ideally with conflicts)
+
+---
+class: inverse
+# Forking a repo
+
+### Person 1
+Commit and push those changes
+  
+Submit a pull request to Person A's master branch
 
 --
 
-&lt;img src="https://media.giphy.com/media/BytGuf20BJ1W8/giphy.gif" width="100%" style="display: block; margin: auto;" /&gt;
+### Person A
+Review and merge pull request
+  
+---
+
+# Fun stuff to look into
+
+Github
+- Issues
+- Releases
+- Projects
+
+Git
+- `git tag`
+- `git bisect`
+
+--
+
+## Things to keep in mind
+- Deleting files doesn't remove from Github necessarily
+- Repos can get unwieldy over time
+  - Try not to store anything other than code to keep it light
+  - Github Releases is a cool feature that could help
 
 ---
 
-## Resources
+# Resources
 
 [Happy Git and Github for the useR](https://happygitwithr.com/)
 
@@ -1001,13 +1077,19 @@ background-position: 90% 10%
 
 [git documentation itself isn't bad](https://git-scm.com/docs/)
 
-## Fun Resources
+# Fun Resources
 
 [Commits From Last Night](http://www.commitlogsfromlastnight.com/)
 
 [git manual page generator](https://git-man-page-generator.lokaltog.net/)
 
 [starwars intro you commit history!](http://starlogs.net/#DanOvando/Global-Fishery-Potential)
+
+---
+
+# With time, practice, and patience
+
+&lt;img src="https://media.giphy.com/media/BytGuf20BJ1W8/giphy.gif" width="100%" style="display: block; margin: auto;" /&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
