@@ -262,6 +262,16 @@ knitr::include_graphics("https://git-scm.com/book/en/v2/images/areas.png")
 ```
 
 ---
+
+# How to Git
+
+
+### Your Mantra:
+
+> Commit, pull, push!
+
+---
+
 # How to Git (on your local machine)
 
 --
