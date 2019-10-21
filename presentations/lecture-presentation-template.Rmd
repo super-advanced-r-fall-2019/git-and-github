@@ -429,6 +429,12 @@ And what files are ignored?
 ---
 class: middle
 
+# Exercise - .gitignore
+
+Ignore all the .csv, .Rdata, and .rds files inside the results folder
+
+---
+
 # `git pull`
 
 Shortcut combining `git fetch` and `git merge`.
