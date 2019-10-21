@@ -47,3 +47,10 @@ rsconnect/
 # Xaringan shenanigans
 presentations/libs/
 presentations/xaringan-example_files/
+
+# Things in the results folder
+results/*.csv
+results/*.rds
+!results/file2save.csv
+
+
