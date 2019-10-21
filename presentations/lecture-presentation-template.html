@@ -240,7 +240,8 @@ background-position: 80% 90%
 
 # How to Git
 
-Your Mantra
+
+### Your Mantra:
 
 &gt; Commit, pull, push!
 
@@ -398,6 +399,12 @@ class: inverse, middle
 And what files are ignored?
 ---
 class: middle
+
+# Exercise - .gitignore
+
+Ignore all the .csv, .Rdata, and .rds files inside the results folder
+
+---
 
 # `git pull`
 
@@ -765,6 +772,35 @@ Pull changes
 ## Together: pick one file to mess around in.
 ]
 ---
+
+# Merge Conflicts
+.pull-left[
+Look like this
+
+```
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:my-file.R
+
+a &lt;- 2 + 2
+
+
+=======
+
+a &lt;- 2 + 3
+
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; issue-5:my-file.R
+```
+] .pull-right[
+From [happygitwithr](https://happygitwithr.com/git-branches.html)
+
+In this conflict, the lines between &lt;&lt;&lt;&lt;&lt;&lt; HEAD:my-file.R and ====== are the content from the branch you are currently on. The lines between ======= and &gt;&gt;&gt;&gt;&gt;&gt;&gt; issue-5:my-file.R are from the feature branch we are merging. 
+
+To resolve the conflict, edit this section until it reflects the state you want in the merged result. Pick one version or the other or create a hybrid. Also remove the conflict markers &lt;&lt;&lt;&lt;&lt;&lt;, ====== and &gt;&gt;&gt;&gt;&gt;&gt;.
+
+*Save, stage, commit, pull, and push the results*
+]
+---
+
+
 background-image: url(https://media.giphy.com/media/69yrZWuu7clVYvmtJi/giphy.gif)
 background-size: 300px
 background-position: 90% 60%
@@ -915,15 +951,20 @@ Lists branches in your working tree
 
 --
 
-## `git branch -b branch-name`
+### `git branch -b branch-name`
 Creates a new branch with `branch-name`
 
 --
 
-## `git checkout branch-name`
+### `git checkout branch-name`
 Switches to existing branch named `branch-name`
 
 Keeps local changes for staging
+
+### `git push -u branch-name`
+
+Publishes branch to GitHub
+
 ---
 background-image: url(https://media.giphy.com/media/odsSqL5YuuypW/giphy.gif)
 background-size: 400px
@@ -976,10 +1017,13 @@ class: inverse
 1. Create a branch from your local repo
   - `git branch -b my-new-branch`
 
-1. Make changes to that branch
+2. Make and commit changes to that branch
 
-1. Merge those changes back into the master branch
-  - `git push origin my-new-branch`
+3. Checkout master branch
+  - `git checkout master`
+
+4. Merge changes in feature branch back into the master branch
+  - `git merge my-new-branch`
 
 --
 
@@ -988,7 +1032,7 @@ class: inverse
 
 1. Go back to `master` and make changes
 
-1. Go back to your branch and [rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) from `master`
+1. Go back to your branch and [rebase](https://hackernoon.com/git-merge-vs-rebase-whats-the-diff-76413c117333) from `master`
 
 1. Merge rebased branch back into `master`
 
