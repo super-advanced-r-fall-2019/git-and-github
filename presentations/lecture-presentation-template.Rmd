@@ -815,6 +815,14 @@ Pull changes
 ## Together: pick one file to mess around in.
 ]
 ---
+
+# Merge Conflicts
+
+Add image of what a merge conflict looks like
+
+---
+
+
 background-image: url(https://media.giphy.com/media/69yrZWuu7clVYvmtJi/giphy.gif)
 background-size: 300px
 background-position: 90% 60%
