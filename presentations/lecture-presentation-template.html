@@ -3,8 +3,8 @@
   <head>
     <title>Git and Github</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Lee Qi" />
-    <meta name="date" content="2019-10-19" />
+    <meta name="author" content="Lee Qi &amp; Dan Ovando" />
+    <meta name="date" content="2019-10-21" />
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
   </head>
@@ -14,18 +14,19 @@ class: center, middle, inverse, title-slide
 
 # Git and Github
 ## FISH 507 Fall 2019
-### Lee Qi
-### 2019-10-19
+### Lee Qi &amp; Dan Ovando
+### 2019-10-21
 
 ---
 
+class: middle
 background-image: url(https://git-scm.com/images/logo@2x.png)
 background-size: 100px
 background-position: 80% 90%
 
 
 
-
+.pull-left[
 # In this class:
 
 What is Git?
@@ -34,12 +35,23 @@ Why use Git?
 
 Basic Git commands
 
---
-
 Some Github features
 
 &lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Octocat_GitHub_Mascot.png/600px-Octocat_GitHub_Mascot.png" width="20%" /&gt;
+]
 
+--
+
+.pull-right[
+# By the end of class:
+Clone a repository
+
+Stage and commit changes
+
+Initialise a collaborative repository
+
+Resolve merge conflicts (or at least understand what they are and what to do)
+]
 
 ---
 background-image: url(https://git-scm.com/images/logo@2x.png)
@@ -50,18 +62,26 @@ background-position: 80% 90%
 
 --
 
-- A system for version control
+- A system for version control of a directory
 
   - Stored as a series of snapshots (commits)
   - Reload and restart from each snapshot
 ![](https://blog.devmountain.com/wp-content/uploads/2019/07/Gitvs.Github-1b-750x322.jpg)
 
 ???
-Like saving at checkpoints in a video game
+Like saving at and loaing from checkpoints in a video game.
 
+It becomes a repository when there's version control
 --
 
 - Free and open source
+
+---
+class: center
+
+# Why use version control?
+
+&lt;img src="http://swcarpentry.github.io/git-novice/fig/phd101212s.png" width="50%" /&gt;
 
 ---
 
@@ -90,7 +110,7 @@ Like saving at checkpoints in a video game
 ]
 
 ---
-# Why use
+## Why use
 
 .pull-left[
 
@@ -113,24 +133,12 @@ Store your repository with its associated version history on a cloud
 Collaborate!
 ]
 
---
-
-##Bottom line:
+---
+class: center, middle
+# Bottom line:
 If (when) you screw your code up at some point, Git and Github will be there for you to help you find out when and where that happened.
 
----
-background-image: url(https://git-scm.com/images/logo@2x.png)
-background-size: 100px
-background-position: 80% 90%
-
-# How to Git
-
-&lt;img src="https://git-scm.com/book/en/v2/images/areas.png" width="90%" /&gt;
---
-
-background-image: url(https://media.giphy.com/media/odsSqL5YuuypW/giphy.gif)
-background-size: 400px
-background-position: 95% 95%
+&lt;img src="https://media.giphy.com/media/ItyO6KZCcOUik/giphy.gif" width="80%" /&gt;
 
 ---
 
@@ -160,7 +168,7 @@ There are also many different user interfaces for managing Git repositories.
 ---
 class: centre
 
-# But
+# Today
 
 --
 
@@ -168,7 +176,7 @@ background-image: url(https://media.giphy.com/media/51Uiuy5QBZNkoF3b2Z/giphy.gif
 background-size: 300px
 background-position: 50% 60%
 
-Today we'll be learning how to run things from the ***command line***.
+We'll be learning how to run things from the ***command line***.
 
 ---
 class: inverse, middle, center
@@ -199,47 +207,92 @@ class: inverse
 --
   
 1. `git config --global user.name "Lee Qi" `
-  - Set user name
+  - Set user name (not the same as your Github username; this is Git!)
   
 1. `git config --global user.email "leeqi@uw.edu"`
-  - Set email address
+  - Set email address (important in tracking your commit history!)
   
 ???
 Commits are linked to these, and that's how git and Github track your commits over time
 
 ---
-
-background-image: url(https://media.giphy.com/media/odsSqL5YuuypW/giphy.gif)
-background-size: 400px
-background-position: 90% 90%
+background-image: url(https://git-scm.com/images/logo@2x.png)
+background-size: 100px
+background-position: 80% 90%
 
 # How to Git
 
-`git init` or `git clone`
+&lt;img src="https://git-scm.com/book/en/v2/images/areas.png" width="90%" /&gt;
 
-`git pull`
-
-`git add` or `git remove`
-
-`git commit`
-
-`git push`
+---
+# How to Git (on your local machine)
 
 --
 
-***`git help`*** or ***`git help &lt;verb&gt;`*** or ***`git &lt;verb&gt; -h`***
+1. Create a directory
 
+--
+
+1. Initialise repository: `git init`
+
+--
+
+1. Make changes
+
+--
+
+1. Stage changes: `git add` and/or `git rm`
+
+--
+
+1. Commit changes: `git commit -m "a very informative commit message"`
+
+.center[
+&lt;img src="https://media.giphy.com/media/UBVE6ZGaZDX7a/giphy.gif" width="30%" /&gt;
+]
 ---
 
-class: middle, centre
+# How to Git (with a remote repository)
+
+1. Clone a repository from a remote: `git clone`
+  - You can also use `git init` but it gets more complicated setting up the remote
+
+--
+
+1. Make changes
+
+--
+
+1. ***Pull*** any changes from your collaborators: `git pull` (shortcut combining `git fetch` and `git merge`)
+
+--
+
+1. Stage changes: `git add` and/or `git rm`
+
+1. Commit changes: `git commit -m "a very informative commit message"`
+
+--
+
+1. ***Push*** your changes to the remote: `git push`
+
+--
+
+background-image: url(https://media.giphy.com/media/odsSqL5YuuypW/giphy.gif)
+background-size: 350px
+background-position: 90% 90%
+
+---
+class: middle
 
 # `git clone`
 Clones an existing repository from a remote connection onto your local directory.
 
+&lt;img src="https://media.giphy.com/media/TlK63Eu0ViBklB4v5RK/giphy.gif" width="50%" style="display: block; margin: auto;" /&gt;
+
 ---
 background-image: url(https://media.giphy.com/media/9x6fPJVGpq9HO/giphy.gif)
-background-size: 350px
-background-position: 90% 90%
+background-size: 450px
+background-position: 50% 90%
 
 ## Why `clone`? Why not just download the .zip file?
 
@@ -254,31 +307,7 @@ Tracks your local changes and compares to the remote connection (`git status`)
 Pull easily to incorporate updates (`git pull`)
 
 ---
-
-# Cloning vs Forking
-
-.pull-left[
-### Cloning
-
-1. Creates a local copy of the repository on your computer
-
-1. Does not automatically grant push privileges
-
-1. If you have changes or fixes, they stay in your local repository unless you're granted pushing privileges
-]
-
-.pull-right[
-### Forking
-
-1. Creates a copy of the repository on Github
-
-1. You have push privileges to your forked repository
-
-1. You can create a Pull Request for the owner of the original repository to review your changes and merge them into the original repository
-]
-
----
-class: inverse, middle, centre
+class: inverse, middle, center
 
 # Exercise: `git clone`
 
@@ -299,8 +328,10 @@ Copy repo link.
 ### From the command line:
 
 ```
+cd &lt;directory-you-want-the-repo-in&gt;
 git clone https://github.com/super-advanced-r-fall-2019/git-and-github.git
 ```
+--
 
 ### From RStudio:
 
@@ -312,29 +343,55 @@ git clone https://github.com/super-advanced-r-fall-2019/git-and-github.git
 
 background-image: url(https://media.giphy.com/media/ZaF4Vl1NQxwaVsStQU/giphy.gif)
 background-size: 150px
-background-position: 90% 90%
+background-position: 95% 30%
 
 # `.gitignore`
 
-One file to rule them all
+One file to rule them all - applies to every clone of the repository
 
 Specifies files and diretories to ignore (intentionally untrack)
 
-Each line specifies a pattern
+--
 
-Visit [here](https://git-scm.com/docs/gitignore) for ways to specify patterns
+Each line specifies a pattern
+- `*` matches anything but a `/`
+- `!` excludes files from a specified pattern
+- Visit [here](https://git-scm.com/docs/gitignore) and [here](https://github.com/github/gitignore) for ways to specify patterns
+
+--
 
 Can also set global patterns to ignore as a configuration variable `core.excludesFile`
 
-***NOTE***: Files already tracked by Git are not affected.
-  To stop tracking a file that is currently tracked, `git rm --cached` will do the trick.
+--
 
+***NOTE***: Files already tracked by Git are not affected.
+- To stop tracking a file that is currently tracked, `git rm --cached` will do the trick.
+  
 ---
-class: middle, centre
+class: inverse, middle
+
+# What does this repo's `.gitignore` file look like?
+
+???
+And what files are ignored?
+---
+class: middle
 
 # `git pull`
 
-Pulls changes from the remote repository and merges them with your local copy
+Shortcut combining `git fetch` and `git merge`.
+
+&lt;img src="https://media.giphy.com/media/3orieOjpRtscDxPKQo/giphy.gif" width="50%" /&gt;
+
+--
+
+`git fetch`: downloads changes from the remote repository 
+
+???
+Doesn't touch your working tree; gives you chance to look at what you're dealing with before actually merging
+--
+
+`git merge`: merges those changes with your local copy.
 
 ---
 
@@ -342,11 +399,11 @@ class: inverse, middle, centre
 
 # Workflow Demo
 
+???
+Make change to .gitignore
 ---
 
-
 class: inverse, middle, centre
-
 # Exercise: `git pull`
 
 ---
@@ -359,10 +416,20 @@ class: inverse
 git pull
 ```
 
+OR
+
+```
+git fetch
+git merge
+```
+
+--
+
 ### From RStudio:
 
-1. Git tab
-1. Pull
+- Git tab
+
+- Pull
 
 ---
 
@@ -370,7 +437,7 @@ git pull
 --
 
 ## Sometimes
-If more than one person has been working on the same file, you can get the dreaded ***MERGE CONFLICT*** message.
+If more than one person has been working on the same file, you can get the dreaded ***MERGE CONFLICT*** message when you try to pull.
 
 --
 ## But
@@ -386,39 +453,396 @@ class: inverse, middle, center
 
 class: inverse
 
-# Creating a New Repository
+# Creating a repository from scratch
 
-- Create a new repository on GitHub
+--
 
-- Clone it to your computer
+1. Create a new directory on your computer
 
-- Add to the .gitignore file
+--
 
-- Change the README.md
+1. Command line:
+```
+cd new-directory       # Change the working directory
+git init               # Initialise the repo
+ls -a                  # List all the files in the repo
+```
+--
 
-- Make a local change, commit it, and push it to GitHub
+1. Create a `.gitignore`
 
-  - For extra fun, revert back to the repo state before that commit
+--
 
+1. Create a `README.md`
+
+???
+Local version control
+--
+
+# OR create one on Github
+
+... and clone it to your computer.
+
+???
+Automatically sets up the remote link
+---
+background-image: url(https://git-scm.com/book/en/v2/images/areas.png)
+background-size: 800px
+background-position: 50% 60%
+
+# Now what?
+
+???
+How do we get from working directory to git directory? Staging!
+---
+
+background-image: url(https://git-scm.com/book/en/v2/images/lifecycle.png)
+background-size: 800px
+background-position: 50% 60%
+
+# Staging changed files for commits
+
+???
+Tracked vs untracked files
+--
+
+Where does the .gitignore come in?
+
+???
+Modified vs unmodified
+
+---
+class: middle
+background-image: url(https://media.giphy.com/media/oZvduOsUmlsk/giphy.gif)
+background-size: 300px
+background-position: 90% 20%
+
+# `git add`
+
+Stages tracked modified files for committing.
+
+--
+
+# `git rm`
+
+Removes a tracked file from the Git index and from the working directory.
+
+--
+
+# `git status`
+
+View status of your repo - which files are in what state.
+---
+
+# On staging files
+- Stage / unstage changes selectively (`git add/rm &lt;filename&gt;`; recommended) or
+
+- Stage all at once (`git add/rm -a`; my lazy method)
+
+--
+
+- Check the status  with `git status` on the command line, or with a GUI
+
+--
+- `git diff &lt;filename&gt;` can show unstaged changes of a file, but can get unwieldy
+
+--
+
+.center[
+&lt;img src="https://media.giphy.com/media/a5ArhTESTXduM/giphy.gif" width="45%" style="display: block; margin: auto;" /&gt;
+]
 
 ---
 class: inverse, middle, center
-# Exercise: Pair up
 
-???
-Pick a person 1 and a person 2
+# Exercise: Staging Changes
+
 ---
 
-## Deal with Conflict
+class: inverse, middle, center
+# Exercise: Pair up
 
-- Make a few changes on GitHub
+---
+class: inverse
 
-- Change the same things locally
+# Inviting a collaborator
 
-- Try and pull changes from GitHub
+Pick someone to be Person 1 and someone to be Person A
 
-- Resolve conflict, and push back to GitHub
+--
 
+.pull-left[
+### Person 1:
+  - Navigate to your newly-created Github repository on your internet browser
+  - Under `Settings / Collaborators`, add Person A and grant push access
+]
+
+.pull-right[
+### Person A:
+  - Clone Person 1's repo to your computer
+]
+
+--
+
+&lt;img src="https://media.giphy.com/media/l1ughbsd9qXz2s9SE/giphy.gif" width="50%" style="display: block; margin: auto;" /&gt;
+
+
+---
+class: inverse
+
+# Exercise: Making and Staging Changes
+--
+
+1. Check the status of the repository
+  - `git status`
+
+--
+
+1. Create a file in the repository 
+
+  - e.g., an R script that prints: `Hello, World!`
+  - Person A and Person 1 each saves this files under a different name
+  
+--
+
+1. Check the status of the repository
+
+--
+
+1. Stage your change
+  - `git add -a` or `git add &lt;name-of-R-file&gt;`
+  
+--
+
+1. Check the status of the repository again - what's changed?
+
+---
+background-image: url(https://git-scm.com/book/en/v2/images/areas.png)
+background-size: 700px
+background-position: 50% 70%
+
+# At this point, we have only staged our changes.
+
+---
+
+class: middle
+# `git commit`
+
+Commits the staged changes.
+
+&lt;img src="https://media.giphy.com/media/UBVE6ZGaZDX7a/giphy.gif" width="30%" /&gt;
+
+--
+
+Opens up editor to add a commit message.
+
+---
+class: middle
+
+## `git commit -m "a very informative commit message"`
+
+Saves you the trouble of figuring out how `vi` works.
+
+&lt;img src="https://media.giphy.com/media/tZpNtSNT0kATYeQkmL/giphy.gif" width="60%" /&gt;
+
+---
+# On committing
+- Commit as often as you can
+
+- Keep the commit messages as informative as possible
+
+--
+
+.center[
+## Your future self will thank you.
+
+&lt;img src="https://media.giphy.com/media/sFTAQ6Z2qwCjK/giphy.gif" width="50%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+class: inverse, middle, center
+
+# Exercise: `git commit`
+
+---
+
+class: inverse
+# `git commit`
+
+1. Commit your staged changes with a very informative commit message.
+
+  - `git commit -m 'some very informative commit message'`
+  
+--
+
+1. Check the status of your repo
+
+---
+
+class: middle, center
+
+## Why can't you see the other person's changes?
+
+&lt;img src="https://media.giphy.com/media/S31kT3zpR4LNm/giphy.gif" width="70%" style="display: block; margin: auto;" /&gt;
+---
+
+class: middle
+
+# `git push`
+
+Push your local commits to the remote.
+
+---
+
+class: inverse, middle, center
+
+# Exercise: `git push`
+
+---
+class: inverse
+
+# `git push`
+
+.pull-left[
+### Person 1
+Push commit
+]
+
+--
+
+.pull-right[
+### Person A
+Check repo status
+
+Pull changes
+
+Push commit
+]
+
+--
+
+.pull-left[
+Pulls changes
+]
+
+--
+
+.center[
+## Together: pick one file to mess around in.
+]
+---
+background-image: url(https://media.giphy.com/media/69yrZWuu7clVYvmtJi/giphy.gif)
+background-size: 300px
+background-position: 90% 60%
+class: middle
+
+# Merge Conflicts
+
+They are going to happen
+
+You will have to deal with it
+
+Almost definitely by hand
+
+Easier with a GUI
+
+Helps if you `pull` / `commit` / `push` often
+
+---
+
+# Dealing with Merge Conflicts
+
+When you `pull`, Git will automatically try and merge files that have conflicts.
+
+Might be easier to go into a GUI and manually sort through the changes
+- Some GUIs have more intuitive interfaces than others
+
+--
+
+background-image: url(https://media.giphy.com/media/hvGKQL8lasDvIlWRBC/giphy.gif)
+background-size: 350px
+background-position: 50% 90%
+
+## If all else fails, there is always the nuclear option... but ***highly do not recommend***!
+???
+Deleting and re-downloading the repo
+---
+class: middle
+# `git stash`
+
+Stores a local version of your changes as in a "stash" without necessarily staging and commiting those changes (though you could if you wanted to!)
+
+--
+
+After `pull`ing, can use `git stash pop` to merge your local changes with new changes
+
+--
+
+Still have to manually go into the file and accept / reject changes
+
+---
+
+class: inverse, middle, center
+
+# Exercise: Conflict Management
+
+---
+class: inverse
+background-image: url(https://media.giphy.com/media/YB7mkFNOSWZZS/giphy.gif)
+background-size: 300px
+background-position: 90% 60%
+
+# Conflict Management
+
+### Both:
+Make (separate) changes to the file you've selected
+
+--
+
+### Person A:
+Stage, commit, and push your changes
+
+--
+
+### Person 1:
+Pull from the remote
+
+What happens if you also stage, commit, and push your own changes?
+
+---
+class: inverse
+# `git stash`
+
+### Person 1
+
+```
+git stash       # Temporarily store your local changes
+git pull        # Overwrite your local files with the remote
+git stash pop   # Apply stashed changes to new files
+git status      # Check repo status
+```
+
+--
+background-image: url(https://media.giphy.com/media/KL7xA3fLx7bna/giphy.gif)
+background-size: 300px
+background-position: 90% 10%
+
+### Both
+
+Look at the merged file and manually resolve the conflict(s)
+
+--
+.pull-left[
+### Person 1
+Stage, commit, and push the conflict-free file
+]
+
+--
+
+.pull-right[
+### Person A
+Pull changes
+]
 ---
 
 ## Branching
@@ -429,6 +853,66 @@ Pick a person 1 and a person 2
 
 - Merge those changes back into the master branch
 
+---
+# How to Git (branching)
+
+--
+Create a directory
+
+Initialise git: `git init`
+
+***Make changes***
+
+Stage changes: `git add` and/or `git rm`
+
+Commit changes: `git commit -m "a very informative commit message"`
+---
+# How to Git (branching)
+
+Create a directory
+
+Initialise git: `git init`
+
+Create a new feature branch: `git checkout -b my-new-feature-branch`
+
+***Make changes***
+
+Stage changes: `git add` and/or `git rm`
+
+Commit changes: `git commit -m "a very informative commit message"`
+
+Jump back to master branch: `git checkout master`
+
+Merge change into master: `git merge my-new-feature-branch`
+
+--
+
+\* Useful when developing and testing features that won't mess up the main line.
+
+
+---
+
+# How to Git (with a remote repository and branching)
+
+`git clone` (or `git init`)
+
+`git checkout -b my-new-feature-branch`
+
+***Make changes***
+
+`git pull`
+
+`git add` and/or `git rm`
+
+`git commit`
+
+`git push origin my-new-feature-branch`
+
+--
+
+background-image: url("https://media.giphy.com/media/149ppZy9RU4CPe/giphy.gif")
+background-size: 300px
+background-position: 90% 60%
 
 ---
 
@@ -460,32 +944,31 @@ Pick a person 1 and a person 2
 
 ---
 
-# Dealing with Merge Conflicts
+background-image: url(https://media.giphy.com/media/xT0xewLy70uaFY3Vte/giphy.gif)
+background-size: 250px
+background-position: 90% 10%
 
-`git diff`
+# Cloning vs Forking
 
-- Git's internal `diff`-ing tool that shows changes to code
-- Can get unwieldy with large changes
+.pull-left[
+### Cloning
 
-`git stash`
+1. Creates a local copy of the repository on your computer
 
-- Stores a local version of your changes as in a "stash" without necessarily staging and commiting those changes
-- After `pull`ing, can use `git stash pop` to merge your local changes with new changes
-- Still have to manually go into the file and accept / reject changes
+1. Does not automatically grant push privileges
 
----
-# Dealing with Merge Conflicts
+1. If you have changes or fixes, they stay in your local repository unless you're granted pushing privileges
+]
 
-Might be easier to go into a GUI and manually sort through the changes
-- Some GUIs have more intuitive interfaces than others
+.pull-right[
+### Forking
 
---
+1. Creates a copy of the repository on Github
 
-background-image: url(https://media.giphy.com/media/hvGKQL8lasDvIlWRBC/giphy.gif)
-background-size: 350px
-background-position: 50% 80%
+1. You have push privileges to your forked repository
 
-## If all else fails, there is always the nuclear option... but ***highly do not recommend***!
+1. You can create a Pull Request for the owner of the original repository to review your changes and merge them into the original repository
+]
 
 ---
 
@@ -498,6 +981,15 @@ background-position: 50% 80%
 
 ---
 
+# How to Git
+
+.center[***`git help`*** or ***`git help &lt;verb&gt;`*** or ***`git &lt;verb&gt; -h`***]
+
+--
+
+&lt;img src="https://media.giphy.com/media/BytGuf20BJ1W8/giphy.gif" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
 
 ## Resources
 

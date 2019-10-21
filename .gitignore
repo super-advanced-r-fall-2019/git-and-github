@@ -43,3 +43,7 @@ rsconnect/
 *.DS_Store
 
 *.pptx
+
+# Xaringan shenanigans
+presentations/libs/
+presentations/xaringan-example_files/
